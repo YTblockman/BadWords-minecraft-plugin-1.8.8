@@ -1,0 +1,17 @@
+name: BadWords
+main: warnplugin.b.Main
+author: YTblockman
+api-version: 1.13
+version: 1.0
+
+commands:
+  warn:
+   description: warns selected player
+  kickqueue:
+   description: add player to kick queue
+  votekick:
+   aliases: [k]
+   description: votes for kick
+  votestay:
+   aliases: [s]
+   description: votes for stay
