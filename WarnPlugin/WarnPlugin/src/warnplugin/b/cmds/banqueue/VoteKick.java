@@ -1,4 +1,4 @@
-package warnplugin.b.cmds;
+package warnplugin.b.cmds.banqueue;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -11,7 +11,9 @@ import warnplugin.b.CheckSum;
 import warnplugin.b.Kicking;
 import warnplugin.b.Main;
 
-public class VoteStay implements CommandExecutor{
+public class VoteKick implements CommandExecutor{
+
+	
 	@Override
 	public boolean onCommand(CommandSender c, Command cmd, String label, String[] a) {
 		if(!(c instanceof Player)) {
@@ -23,12 +25,15 @@ public class VoteStay implements CommandExecutor{
 			}
 			Player plr = (Player) c;
 			if(!Main.voted.contains(plr)) {
-				Main.stay ++;
+				Main.kick ++;
 				plr.sendMessage(ChatColor.GREEN + "Your vote has been submited!");
 				Main.voted.add(plr);
 			}else {
 				plr.sendMessage(ChatColor.RED + "You've alerady voted!");
 			}
+			for (@SuppressWarnings("unused") Player player : Bukkit.getServer().getOnlinePlayers()) {
+		        Main.Players++;
+		    }
 			if(Main.voted.size() > Main.Players /3) {
 				if(CheckSum.check()) {
 					if(Main.ban) {
@@ -39,6 +44,7 @@ public class VoteStay implements CommandExecutor{
 					}else {
 						Bukkit.broadcastMessage(ChatColor.RED + Kicking.getPlayer().getDisplayName() + " had family, but... KICK!");
 						Kicking.getPlayer().kickPlayer(ChatColor.GOLD + "" + ChatColor.BOLD + "YOU HAVE BEEN KICKED!\n" + ChatColor.RESET + "" + ChatColor.RED + "Community voted you for leave!");
+					
 					}
 				}else {
 					Bukkit.broadcastMessage(ChatColor.GREEN + Kicking.getPlayer().getDisplayName() + ChatColor.GREEN + " is lucky today!!!");

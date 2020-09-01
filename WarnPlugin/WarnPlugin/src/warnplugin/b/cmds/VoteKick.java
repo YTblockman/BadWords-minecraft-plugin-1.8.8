@@ -13,7 +13,6 @@ import warnplugin.b.Main;
 
 public class VoteKick implements CommandExecutor{
 
-	
 	@Override
 	public boolean onCommand(CommandSender c, Command cmd, String label, String[] a) {
 		if(!(c instanceof Player)) {
@@ -36,8 +35,15 @@ public class VoteKick implements CommandExecutor{
 		    }
 			if(Main.voted.size() > Main.Players /3) {
 				if(CheckSum.check()) {
-					Bukkit.broadcastMessage(ChatColor.RED + Kicking.getPlayer().getDisplayName() + " had family, but... KICK!");
-					Kicking.getPlayer().kickPlayer(ChatColor.RED + "Community voted, you were kicked!");
+					if(Main.ban) {
+						Bukkit.broadcastMessage(ChatColor.RED + Kicking.getPlayer().getDisplayName() + " had family, but... BANG, Ban apeared!!!");
+						Kicking.getPlayer().kickPlayer(ChatColor.GOLD + "" + ChatColor.BOLD + "YOU HAVE BEEN BANNED\n" + ChatColor.RESET + ""
+								+ ChatColor.RED + "community voted!\n" + "please contact our personal on discord to clear your ban!");
+						Main.banned.add(Kicking.getPlayer().getDisplayName());
+					}else {
+						Bukkit.broadcastMessage(ChatColor.RED + Kicking.getPlayer().getDisplayName() + " had family, but... KICK!");
+						Kicking.getPlayer().kickPlayer(ChatColor.RED + "Community voted, you were kicked!");
+					}
 				}else {
 					Bukkit.broadcastMessage(ChatColor.GREEN + Kicking.getPlayer().getDisplayName() + ChatColor.GREEN + " is lucky today!!!");
 					Kicking.getPlayer().sendMessage(ChatColor.GREEN + "You're free, community voted for you to stay");// do not kick

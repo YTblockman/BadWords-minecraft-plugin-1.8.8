@@ -10,8 +10,12 @@ commands:
   kickqueue:
    description: add player to kick queue
   votekick:
-   aliases: [k]
+   aliases: [voteban, k, b]
    description: votes for kick
   votestay:
    aliases: [s]
    description: votes for stay
+  bdrl:
+   description: reloads plugin data
+  banqueue:
+   description: add player to ban queue

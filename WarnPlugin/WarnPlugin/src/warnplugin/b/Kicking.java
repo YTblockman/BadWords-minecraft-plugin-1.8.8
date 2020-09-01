@@ -16,6 +16,7 @@ public class Kicking {
 	
 	public static void resetPlayer() {
 		plr = null;
+		Main.ban = false;
 	}
 	
 }

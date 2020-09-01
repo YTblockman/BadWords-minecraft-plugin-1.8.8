@@ -20,6 +20,12 @@ public class ListOfBadWords {
 		ar.add("chobot_014");
 		ar.add("idiot");
 		ar.add("hajzel");
+		ar.add("pici");
+		ar.add("skurvenej");
+		ar.add("zajebanej");
+		ar.add("pice");
+		ar.add("pojebany");
+		ar.add("skurveny");
 		
 		return ar;
 	}
